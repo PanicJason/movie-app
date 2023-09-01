@@ -1,0 +1,78 @@
+/* Header Container */
+.headerContainer {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+    z-index: 100;
+    padding: 0 40px;
+    width: 100%;
+  
+    @media (max-width: 768px) {
+      padding: 0;
+      top: 0;
+      left: 0;
+      transform: none;
+      width: 100%;
+    }
+  }
+  
+  /* Ul */
+  .ul {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  /* Image */
+  .image {
+    background: url('../../assets/netflix_logo.svg') no-repeat center center;
+    background-size: 150px;
+    margin-right: auto;
+    width: 160px;
+  
+    @media (max-width: 768px) {
+      margin-right: 0;
+      background-size: 110px;
+    }
+  }
+  
+  /* Li */
+  .li {
+    width: 140px;
+    text-align: center;
+    font-size: 20px;
+    border-bottom: 3px solid transparent;
+  }
+  
+  .li.current {
+    border-bottom-color: #E30914;
+  }
+  
+  /* ScLink */
+  .scLink {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .scLink.current {
+    color: #E30914;
+  }
+  
+  /* Additional media query styles */
+  @media (max-width: 768px) {
+    .li {
+      width: 60px;
+      font-size: 16px;
+    }
+  
+    .scLink {
+      height: 50px;
+    }
+  }
