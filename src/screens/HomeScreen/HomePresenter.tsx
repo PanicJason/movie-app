@@ -1,43 +1,104 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Loader from '../../components/Loader/Loder';
-
-import styles from './Home.module.css';
-
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import Loader from '../../components/Loader/Loder';
+import styles from './Home.module.css';
+import Footer from '../../components/Footer/Footer';
+import QnA from '../../components/QnA/QnA';
+import Description from '../../components/Description/Description';
 
-// HomePresenter 컴포넌트의 props 인터페이스 정의
-interface HomeProps {
-    movieDetail : any ; // 영화 상세 정보
-    loading : boolean;  // 로딩 상태
-    error : any;
+
+
+interface HomePresenterProps {
+  movieDetail: any;
+  error: string | null;
+  loading: boolean;
 }
 
-// HomePresenter 컴포넌트 정의
-const HomePresenter: React.FC<HomeProps> = ({
-    movieDetail,
-    loading,
-    error
+const HomePresenter: React.FC<HomePresenterProps> = ({
+  movieDetail,
+  error,
+  loading,
 }) => {
-    return loading? (
-        <Loader></Loader>
-    ) : (
-        <div className={styles.container}>
-            <HelmetProvider>
-                <Helmet>
-                    <title>넷플릭스 - 홈</title>
-                </Helmet>
-            </HelmetProvider>
+  const checkPC =
+    'win16|win32|win64|macintel|mac|';
+  const checkPCMobileBool =
+    checkPC.indexOf(navigator.platform.toLowerCase()) < 0;
 
-            <div>컨텐츠 적을 예정</div>
+  return loading ? (
+    <Loader />
+  ) : (
+    <div className={styles.container}>
+      <HelmetProvider>
+        <Helmet>
+          <title>넷플릭스 - 홈</title>
+        </Helmet>
+      </HelmetProvider>
+
+{error}
+      {movieDetail && (
+        <div className={styles.homeContainer}>
+          <iframe 
+            id="iframe" 
+            title="movie"
+            className={styles.iframe}
+            src={`https://www.youtube.com/embed/${movieDetail.videos.results[0].key}?controls=0&autoplay=1&loop=1&mute=1&playlist=${movieDetail.videos.results[0].key}`}
+            width="640"
+            height="360"
+            frameBorder="0"
+            allow="autoplay; fullscreen"
+          ></iframe>
+          <div className={styles.content}>
+            <h1 className={styles.title}>{movieDetail.title}</h1>
+            <h2 className={styles.subTitle}>{movieDetail.tagline}</h2>
+            <div className={styles.genres}>
+              {movieDetail.genres.map((genre : any, index : any) =>
+                movieDetail.genres.length - 1 === index
+                  ? genre.name
+                  : `${genre.name} • `
+              )}
+            </div>
+            <div className={styles.yearRuntimeContainer}>
+              <span className={styles.year}>
+                {movieDetail.release_date.substring(0, 4)}
+              </span>
+              <span className={styles.yearRuntimeSpan}>•</span>
+              <span className={styles.runtime}>{movieDetail.runtime}분</span>
+            </div>
+            <div className={styles.rating}>
+              평점
+              <span className={styles.ratingChild}>
+                {movieDetail.vote_average}
+              </span>
+            </div>
+            {checkPCMobileBool ? (
+              <div className={styles.overview}>
+                {movieDetail.overview.substring(0, 310)}..
+              </div>
+            ) : (
+              <div className={styles.overview}>
+                {movieDetail.overview.substring(0, 150)}..
+              </div>
+            )}
+          </div>
+          <div className={styles.homeSubContainer}>
+            {/* Render Description, QnA, and Footer components */}
+
+                <Description/>
+                <QnA/>
+                <Footer/>
+
+          </div>
         </div>
-    );
-}
+      )}
+    </div>
+  );
+};
+HomePresenter.propTypes = {
+  movieDetail: PropTypes.object,
+  error: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+};
 
-// props에 대한 타입 및 필수 여부 검증을 위한 PropTypes 설정
-HomePresenter.propTypes ={
-    movieDetail : PropTypes.object, // movieDetail은 객체여야 함
-    loading : PropTypes.bool.isRequired // loading은 필수 prop이며 불리언이어야 함
-}
 
 export default HomePresenter;

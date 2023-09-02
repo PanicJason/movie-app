@@ -39,7 +39,7 @@ class HomeContainer extends Component<{}, HomeContainerState>{
                 }
 
             }catch(error) {
-                this.setState({error:"비디오를 찾을 수 없어요"});
+                this.setState({error: `${error}`});
             }
         }
         catch(error) {
