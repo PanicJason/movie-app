@@ -1,0 +1,157 @@
+/* HomePresenter.module.css */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  .homeContainer {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .iframe {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.65;
+  
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  .content {
+    color: white;
+    position: absolute;
+    top: 39%;
+    left: 40px;
+    transform: translateY(-50%);
+    width: 550px;
+    font-family: "Do Hyeon", sans-serif;
+    animation: homeAni 0.7s ease-in;
+  
+    @keyframes homeAni {
+      from {
+        opacity: 0;
+        transform: translateY(-40%);
+      }
+      to {
+        opacity: 1;
+      }
+    }
+  
+    @media (max-width: 768px) {
+      width: 100%;
+      left: 0;
+      padding: 0 15px;
+      top: 83%;
+    }
+  }
+  
+  .title {
+    font-size: 53px;
+    text-shadow: rgba(255, 255, 255, 0.6) 0px 5px 10px;
+    font-family: "Do Hyeon", sans-serif;
+  
+    @media (max-width: 768px) {
+      font-size: 30px;
+    }
+  }
+  
+  .subTitle {
+    font-size: 28px;
+    margin-top: 25px;
+    font-style: italic;
+  
+    @media (max-width: 768px) {
+      font-size: 18px;
+      margin-top: 15px;
+    }
+  }
+  
+  .genres {
+    font-size: 20px;
+    color: rgb(108, 117, 125);
+    margin-top: 18px;
+    margin-bottom: 8px;
+  
+    @media (max-width: 768px) {
+      font-size: 16px;
+      margin-top: 10px;
+    }
+  }
+  
+  .yearRuntimeContainer {
+    font-size: 20px;
+  
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
+  }
+  
+  .year {
+    font-size: 20px;
+    color: rgb(108, 117, 125);
+  
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
+  }
+  
+  .runtime {
+    font-size: 20px;
+    color: rgb(108, 117, 125);
+  
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
+  }
+  
+  .yearRuntimeSpan {
+    margin: 0 5px;
+    color: rgb(108, 117, 125);
+  }
+  
+  .rating {
+    font-size: 20px;
+    color: white;
+    margin-top: 12px;
+    margin-bottom: 15px;
+  
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
+  }
+  
+  .ratingChild {
+    font-size: 22px;
+    color: dodgerblue;
+    margin-left: 7px;
+  
+    @media (max-width: 768px) {
+      font-size: 17px;
+    }
+  }
+  
+  .overview {
+    font-size: 21px;
+    line-height: 1.6;
+  
+    @media (max-width: 768px) {
+      font-size: 15px;
+      line-height: 1.2;
+    }
+  }
+  
+  .homeSubContainer {
+    width: 100%;
+  }

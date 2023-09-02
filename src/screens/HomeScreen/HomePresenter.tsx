@@ -1,15 +1,15 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import Loader from '../../components/Loader/Loder';
+
+import styles from './Home.module.css';
+
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 
 // HomePresenter 컴포넌트의 props 인터페이스 정의
 interface HomeProps {
     movieDetail : any ; // 영화 상세 정보
     loading : boolean;  // 로딩 상태
-}
-
-interface HomeProps {
-    movieDetail : any;
-    loading : boolean;
     error : any;
 }
 
@@ -22,7 +22,15 @@ const HomePresenter: React.FC<HomeProps> = ({
     return loading? (
         <Loader></Loader>
     ) : (
-        <div>홈</div>
+        <div className={styles.container}>
+            <HelmetProvider>
+                <Helmet>
+                    <title>넷플릭스 - 홈</title>
+                </Helmet>
+            </HelmetProvider>
+
+            <div>컨텐츠 적을 예정</div>
+        </div>
     );
 }
 
