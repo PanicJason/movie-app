@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Loader from '../../components/Loader/Loder';
 
 // HomePresenter 컴포넌트의 props 인터페이스 정의
 interface HomeProps {
@@ -11,7 +12,9 @@ const HomePresenter: React.FC<HomeProps> = ({
     movieDetail,
     loading
 }) => {
-    return (
+    return loading? (
+        <Loader></Loader>
+    ) : (
         <div>홈</div>
     );
 }

@@ -1,5 +1,4 @@
 import axios ,{AxiosResponse} from 'axios';
-import { promises } from 'dns';
 
 type NowPlayingData = any;
 type MovieDetailData = any;
