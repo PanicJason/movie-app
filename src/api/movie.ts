@@ -1,5 +1,5 @@
 import axios ,{AxiosResponse} from 'axios';
-
+import { promises } from 'dns';
 
 type NowPlayingData = any;
 type MovieDetailData = any;
@@ -8,6 +8,7 @@ const REST_API_ADDR = axios.create({
     baseURL : "https://api.themoviedb.org/3/",
     params : {
         language : "KO-KR",
+        api_key : "b01194af52d0542aa646fb70bc0f3d24"
     },
 });
 

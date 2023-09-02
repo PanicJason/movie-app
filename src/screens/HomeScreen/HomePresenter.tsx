@@ -13,7 +13,7 @@ const HomePresenter: React.FC<HomeProps> = ({
 }) => {
     return (
         <div>홈</div>
-    )
+    );
 }
 
 // props에 대한 타입 및 필수 여부 검증을 위한 PropTypes 설정
