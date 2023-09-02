@@ -7,10 +7,17 @@ interface HomeProps {
     loading : boolean;  // 로딩 상태
 }
 
+interface HomeProps {
+    movieDetail : any;
+    loading : boolean;
+    error : any;
+}
+
 // HomePresenter 컴포넌트 정의
 const HomePresenter: React.FC<HomeProps> = ({
     movieDetail,
-    loading
+    loading,
+    error
 }) => {
     return loading? (
         <Loader></Loader>

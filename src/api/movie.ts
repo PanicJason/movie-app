@@ -13,9 +13,9 @@ const REST_API_ADDR = axios.create({
 
 
 export const homeApi = {
-    nowPlaying : () : Promise<AxiosResponse<NowPlayingData>> => REST_API_ADDR.get("movie/now_playing"),
+    nowPlaying : () : Promise<AxiosResponse<NowPlayingData>> => REST_API_ADDR.get("movie/now_aying"),
 
-    movieDetauk :(id:number) : Promise<AxiosResponse<MovieDetailData>> => REST_API_ADDR.get(`movie/${id}`,{
+    movieDetail :(id:number) : Promise<AxiosResponse<MovieDetailData>> => REST_API_ADDR.get(`movie/${id}`,{
             params:{append_toresonse : "videos"}
         }),
 
