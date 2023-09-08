@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 interface SectionProps{
     children: ReactNode;
+    title : string;
 }
 
 const Container = styled.div`
@@ -48,7 +49,7 @@ const Children = styled.div`
 `;
 
 
-const Section : React.FC<SectionProps> = ({children}) =>{
+const Section : React.FC<SectionProps> = ({children,title}) =>{
     return (
         <Container>
             <Children>{children}</Children>

@@ -187,3 +187,18 @@ const Poster : React.FC<PosterProps> = ({
         </ScLink>
     );
 }
+
+
+
+Poster.propTypes ={
+    id : PropTypes.number.isRequired,
+    imageurl : PropTypes.string,
+    title : PropTypes.string.isRequired,
+    rating : PropTypes.number,
+    year : PropTypes.string,
+    isMovie : PropTypes.bool,
+    overview : PropTypes.string,
+    popularity : PropTypes.number
+};
+
+export default Poster;

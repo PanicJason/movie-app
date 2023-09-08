@@ -1,0 +1,131 @@
+/* Container */
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 65px;
+  }
+  
+  /* TitleContainer */
+  .TitleContainer {
+    margin-top: 90px;
+  }
+  
+  @media (max-width: 768px) {
+    .TitleContainer {
+      margin-top: 40px;
+    }
+  }
+  
+  /* TitleContent */
+  .TitleContent {
+    text-align: center;
+  }
+  
+  /* Title */
+  .Title {
+    font-size: 40px;
+    color: white;
+    margin-bottom: 25px;
+    font-weight: bold;
+  }
+  
+  @media (max-width: 768px) {
+    .Title {
+      font-size: 30px;
+    }
+  }
+  
+  /* SubTitle */
+  .SubTitle {
+    font-size: 18px;
+    color: gray;
+    line-height: 1.5;
+  }
+  
+  @media (max-width: 768px) {
+    .SubTitle {
+      font-size: 15px;
+    }
+  }
+  
+  /* ButtonContainer */
+  .ButtonContainer {
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px 0;
+    box-sizing: border-box;
+  }
+  
+  @media (max-width: 768px) {
+    .ButtonContainer {
+      margin-top: 20px;
+    }
+  }
+  
+  /* ButtonContent */
+  .ButtonContent {
+    display: flex;
+  }
+  
+  @media (max-width: 768px) {
+    .ButtonContent {
+      justify-content: space-between;
+    }
+  }
+  
+  /* ButtonLink */
+  .ButtonLink {
+    color: white;
+    border-bottom: 3px solid transparent;
+    color: white;
+    margin: 0 15px;
+    padding: 10px 10px;
+    box-sizing: border-box;
+    font-size: 17px;
+    font-weight: bold;
+  }
+  
+  .ButtonLink.current {
+    border-bottom-color: #E30914;
+    color: #E30914;
+  }
+  
+  @media (max-width: 768px) {
+    .ButtonLink {
+      margin: 0 5px;
+      font-size: 13px;
+      font-weight: normal;
+    }
+  }
+  
+  /* GototopButton */
+  .GototopButton {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    z-index: 200;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(to right, #536976, #292e49);
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 3px 2px;
+  }
+  
+  @media (max-width: 768px) {
+    .GototopButton {
+      width: 45px;
+      height: 45px;
+      bottom: 20px;
+      right: 20px;
+    }
+  }
+  
