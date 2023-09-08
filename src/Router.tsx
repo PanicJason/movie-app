@@ -2,6 +2,7 @@ import { FC } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import HomeContainer from './screens/HomeScreen';
 import ScreenHeader from "./components/Header/ScreenHeader";
+import MovieContainer from "./screens/MovieScreen";
 
 
 
@@ -15,6 +16,7 @@ const Router : FC = (props) => {
             <ScreenHeader pathname={pathname} />
             <Routes>
                 <Route path="/" Component={HomeContainer}/>
+                <Route path="/movie/*" Component={MovieContainer}/>
             </Routes>
         </div>
     )
