@@ -7,6 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { moviesApi } from "../../api/movie";
+import { useInfiniteQuery } from "react-query";
+import useInfiniteScroll from "../../utils/useInfiniteScroll";
+
+import uniqBy from 'lodash/uniqBy';
 
 interface MoviePresenterProps{
     nowPlaying: any[] | null;
@@ -44,11 +48,55 @@ const MoviePresenter : React.FC<MoviePresenterProps>=({
         const [upcomingMovies, setUpcomingMovies] = useState<any[]>([]);
         const [topRatedMovies, setTopRatedMovies] = useState<any[]>([]);
         
+        const page = useInfiniteScroll();
+
+        const getInfiniteApi = async() : Promise<void> =>{
+            if(page !== 1) {
+                try{
+                    let newMovies : any[] = [];
+
+                    if (pathname === "/movie") {
+                        const { data } = await moviesApi.popularInfinite(page);
+                        newMovies = data.results;
+                      } else if (pathname === "/movie/now-playing") {
+                        const { data } = await moviesApi.nowPlayingInfinite(page);
+                        newMovies = data.results;
+                      } else if (pathname === "/movie/upcoming") {
+                        const { data } = await moviesApi.upcomingInfinite(page);
+                        newMovies = data.results;
+                      } else if (pathname === "/movie/top-rated") {
+                        const { data } = await moviesApi.topRatedInfinite(page);
+                        newMovies = data.results;
+                      }
+
+                      const totalMovies = [...popularMovies, ...newMovies];
+                      const uniqByMovies = uniqBy(totalMovies, "id");
+
+                      if (pathname === "/movie") {
+                        setPopularMovies(uniqByMovies);
+                      } else if (pathname === "/movie/now-playing") {
+                        setNowPlayingMovies(uniqByMovies);
+                      } else if (pathname === "/movie/upcoming") {
+                        setUpcomingMovies(uniqByMovies);
+                      } else if (pathname === "/movie/top-rated") {
+                        setTopRatedMovies(uniqByMovies);
+                      }
+
+                }
+                catch (error){
+                    console.log(error);
+                }
+            }
+        };
+
+        useEffect(()=>{
+            getInfiniteApi();
+        },[page]);
       
         return loading ? (
           <Loader/>
-        ) :
-        (
+        ) 
+        :(
           <div className={styles.Container}>
             <HelmetProvider>
               <Helmet>
